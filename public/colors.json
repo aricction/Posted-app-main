@@ -1,0 +1,74 @@
+{
+  "color_pairs": [
+    {
+      "name": "Ultimate Gray & Illuminating",
+      "colors": {
+        "Background": "#949398FF",
+        "Text": "#F4DF4EFF"
+      }
+    },
+    {
+      "name": "Living Coral & Pacific Coast",
+      "colors": {
+        "Background": "#FC766AFF",
+        "Text": "#5B84B1FF"
+      }
+    },
+    {
+      "name": "Ultra Violet & Blooming Dahlia",
+      "colors": {
+        "Background": "#5F4B8BFF",
+        "Text": "#E69A8DFF"
+      }
+    },
+    {
+      "name": "Turquoise & Warm Sand",
+      "colors": {
+        "Background": "#42EADDFF",
+        "Text": "#CDB599FF"
+      }
+    },
+    {
+      "name": "Black & White",
+      "colors": {
+        "Background": "#FFFFFFFF",
+        "Text": "#000000FF"
+      }
+    },
+    {
+      "name": "Blue & Orange",
+      "colors": {
+        "Background": "#00A4CCFF",
+        "Text": "#F95700FF"
+      }
+    },
+    {
+      "name": "Sailor Blue & Mint",
+      "colors": {
+        "Background": "#00203FFF",
+        "Text": "#ADEFD1FF"
+      }
+    },
+    {
+      "name": "Gray & Lime Punch",
+      "colors": {
+        "Background": "#606060FF",
+        "Text": "#D6ED17FF"
+      }
+    },
+    {
+      "name": "Cherry Tomato & Rapture Rose",
+      "colors": {
+        "Background": "#ED2B33FF",
+        "Text": "#D85A7FFF"
+      }
+    },
+    {
+      "name": "Forest Green & Moss Green",
+      "colors": {
+        "Background": "#2C5F2D",
+        "Text": "#97BC62FF"
+      }
+    }
+  ]
+}

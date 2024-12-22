@@ -3,16 +3,14 @@ import ExportBtn from './components/exportbtn';
 import AddBtn from './components/addTextbtn'; 
 import Save from './components/saveBtn';
 
-const Tools = ({ handleNameChange, handleMessage, handleColorChange , addTextNode , handleImageUpload}) => {
+const Tools = ({ handleNameChange, handleMessage, handleColorChange, addTextNode, handleImageUpload, handleImageRemove }) => {
     const [isOpen, setIsOpen] = useState(false);
     const [colorPairs, setColorPairs] = useState([]);
     const [selectedFile, setSelectedFile] = useState(null);
-    const [success, setSuccess] = useState('');
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
 
     const toggleDropdown = () => {
         setIsOpen(!isOpen);
-    }
+    };
 
     useEffect(() => {
         async function fetchColorPairs() {
@@ -34,17 +32,21 @@ const Tools = ({ handleNameChange, handleMessage, handleColorChange , addTextNod
     const handleColorSelect = (colors) => {
         handleColorChange({ target: { value: colors } });
         setIsOpen(false);
-    }
+    };
 
     const handleFileChange = (e) => {
         const file = e.target.files[0];
-        if(file){
+        if (file) {
             setSelectedFile(file);
-            const imageUrl= URL.createObjectURL(file);
+            const imageUrl = URL.createObjectURL(file);
             handleImageUpload(imageUrl);
-         }
-    }
+        }
+    };
 
+    const handleRemoveImage = () => {
+        setSelectedFile(null); // Reset the selected file
+        handleImageRemove(); // Call the prop to remove the image from the canvas
+    };
 
     return (
         <div className="lg:w-full md:w-1/4 p-4 border-b md:border-b-0 md:border-r border-gray-200">
@@ -66,18 +68,27 @@ const Tools = ({ handleNameChange, handleMessage, handleColorChange , addTextNod
                         onChange={handleMessage}
                     />
                 </div>
-                <div>
+                <div className="relative mt-4">
                     <label className="block text-sm font-medium text-gray-700">Choose a file</label>
                     <input
                         type="file"
-                        className="mt-1 p-2 block w-1/2 border border-gray-300 rounded-md bg-blue-300"
+                        className="mt-1 p-2 flex w-1/2 border border-gray-300 rounded-md bg-blue-300"
                         onChange={handleFileChange}
                     />
                 </div>
+               <div>
+                    <button
+                        className="w-1/2 bg-red-500 hover:bg-red-700 text-white font-bold p-4 rounded mt-2"
+                        onClick={handleRemoveImage}
+                    >
+                        Remove Image
+                    </button>
+              </div>
                 <button
-                 className="w-1/2 bg-blue-500 hover:bg-blue-700 text-white font-bold p-4 rounded" 
-                 onClick={addTextNode}>
-                    add text
+                    className="w-1/2 bg-blue-500 hover:bg-blue-700 text-white font-bold p-4 rounded mt-4"
+                    onClick={addTextNode}
+                >
+                    Add Text
                 </button>
               
                 <button
@@ -90,7 +101,7 @@ const Tools = ({ handleNameChange, handleMessage, handleColorChange , addTextNod
                 </button>
                 <div
                     id="dropdown"
-                    className={`z-10 ${isOpen ? 'block' : 'hidden'} bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 absolute`}
+                    className={`z-10 ${isOpen ? 'block' : 'hidden'} bg-white divide-y divide-blue-100 rounded-lg shadow w-44 dark:bg-blue-700 absolute`}
                 >
                     <ul className="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDefaultButton">
                         {colorPairs.map((pair) => (
@@ -107,7 +118,6 @@ const Tools = ({ handleNameChange, handleMessage, handleColorChange , addTextNod
                 </div>
               
                 <ExportBtn />
-               
             </div>
         </div>
     );

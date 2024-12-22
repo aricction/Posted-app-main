@@ -2,13 +2,14 @@ import React, { useEffect, useRef, useState } from 'react';
 import { Stage, Layer, Rect, Text, Image, Transformer } from 'react-konva';
 import useImage from 'use-image';
 
-const Canvas = ({ name, message, file, color = {} }) => {
+const Canvas = ({ name, message, file, color = {} ,handleImageRemove  }) => {
   const [stageWidth, setStageWidth] = useState(window.innerWidth / 2);
   const [stageHeight, setStageHeight] = useState(window.innerHeight - 190);
-  const [image] = useImage(file); // Use useImage to handle image loading
+  const [image, setImage] = useImage(file);// Use useImage to handle image loading
   const [selectedNode, setSelectedNode] = useState(null);
   const [transformerVisible, setTransformerVisible] = useState(false);
   const [imageWarning, setImageWarning] = useState('');
+  
   
   const nameRef = useRef(null);
   const messageRef = useRef(null);
@@ -122,6 +123,8 @@ const Canvas = ({ name, message, file, color = {} }) => {
   const rectX = (stageWidth - rectWidth) / 2;
   const rectY = (stageHeight - rectHeight) / 2;
 
+
+
   return (
     <div>
       <div className="w-full md:w-3/4 sm:w-1/2 h-3/4 mt-10 ml-4 p-4 bg-gray-500 rounded-lg flex justify-center">
@@ -150,6 +153,7 @@ const Canvas = ({ name, message, file, color = {} }) => {
                 draggable
               />
             )}
+             
             <Text
               ref={nameRef}
               x={rectX + 20}
@@ -207,6 +211,7 @@ const Canvas = ({ name, message, file, color = {} }) => {
           {imageWarning}
         </div>
       )}
+      
     </div>
   );
 };

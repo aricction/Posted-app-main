@@ -13,7 +13,7 @@ const Home = () => {
     const [file, setFile] = useState(nike);
     const [text, setText] = useState([]);
     const[imageURL, setImageURL]= useState(null);
-
+    
     
 
     const handleNameChange = (e) => {
@@ -50,6 +50,10 @@ const Home = () => {
         };
         setText([...text, newText]);
     }
+    const handleImageRemove = () => {
+        setFile(null);      // Clear the file image
+        setImageURL(null);  // Clear the uploaded image URL
+    };
 
     return (
         <div className='h-screen flex flex-col'>
@@ -63,6 +67,7 @@ const Home = () => {
                         handleImageUpload={handleImageUpload}
                         handleFileChange={handleFileChange}
                         handleAddText={addTextNode} // Pass function as prop
+                        handleImageRemove={handleImageRemove} 
                     />
                 </div>
                 <div className="md:w-3/4 sm:w-1/2 h-3/4 w-full">
@@ -73,6 +78,7 @@ const Home = () => {
                         color={color} 
                         text={text} // Pass textNodes as prop
                         setText={setText} // Pass setTextNodes as prop
+                        
                     />
                 </div>
             </div>
